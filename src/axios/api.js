@@ -42,5 +42,11 @@ export const apiMapper = {
 	 * */
 	getQuestion:(params) => {
 		return axios.post('http://192.168.41.19:3000/api/subject/getQuestion',params).then(res=>res)
+	},
+	/*
+	 获取统计的数据
+	 * */
+	getUserCount:(params) => {
+		return axios.post('http://192.168.41.19:300/api/user/userCount',params).then(res=>res)
 	}
 }
