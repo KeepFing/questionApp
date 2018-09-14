@@ -85,13 +85,27 @@
 			echo(e){
 				console.log(this.radio,'v-model的数据')
 				this.disabled = true
+				let correct = '';
 				if (e == this.questionItem.anwser) {
 					this.anwser = true
 					this.success = true
+					correct = 1
 				}else{
 					this.anwser = true
 					this.success = false
+					correct = 0
 				}
+				var obj = {};
+				obj = {
+					userId:localStorage.getItem('userId'),
+					questionId:this.questionList[this.index].question_id,
+					userAnwser:e,
+					correct:correct,
+					subjectId:localStorage.getItem('subjectId')
+				}
+				apiMapper.saveUserQuestion(obj).then(res=>{
+					console.log(res)
+				})
 			},
 			nextQuestion(){
 				if (this.index == this.questionList.length-1 || this.index > this.questionList.length-1) {

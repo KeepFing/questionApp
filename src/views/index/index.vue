@@ -31,6 +31,7 @@
 			},
 			checkItem(item,id){
 				this.$router.push({path:'/classList',query:{name:item,id:id}})
+				localStorage.setItem('subjectId',id)
 				console.log(item)
 			}
 		}
